@@ -20,3 +20,13 @@ jobs:
 
      - name: Build project with Maven
        run: mvn -B package
+
+     - name: Get Version from POM.xml
+       uses: entimaniac/read-pom-version-action@1.0.0
+       id: getVersion
+    	
+     - name: Upload generated .war to Artifact
+       uses: actions/upload-artifact@v3
+       with:
+        name: mvn-hello-world-${{ steps.getVersion.outputs.version }}.zip
+        path: staging
