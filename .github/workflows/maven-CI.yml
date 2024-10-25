@@ -25,6 +25,10 @@ jobs:
        uses: entimaniac/read-pom-version-action@1.0.0
        id: getVersion
 
+     - name: Crear staging y mover .war
+       run: mkdir staging && cp target/*.war staging
+       
+
      - name: Upload generated .war to Artifact 
        uses: actions/upload-artifact@v3
        with:
